@@ -1,36 +1,23 @@
-function encriptar(){
-    
-    let texto = document.getElementById("textoEncriptado").value.toLowerCase();
+const textArea = document.querySelector(".text-area");
+const mensaje = document.querySelector(".mensaje");
 
-    var textoEncriptado = texto.replace(/e/img, "enter");
-    var textoEncriptado = textoEncriptado.replace(/i/img, "imes");
-    var textoEncriptado = textoEncriptado.replace(/a/img, "ai");
-    var textoEncriptado = textoEncriptado.replace(/o/img, "ober");
-    var textoEncriptado = textoEncriptado.replace(/u/img, "ufat");
 
-    document.getElementById("textoDesencriptado").innerHTML = textoEncriptado;
-
-    document.getElementById("botonCopiar").style.display = "show";
-    document.getElementById("botonCopiar").style.display = "inherit";
-
+function btnEncriptar(){
+    const textoEncriptado = encriptar(textArea.value);
+    mensaje.value = textoEncriptado;
 }
 
+function encriptar(string) {
 
-function desencriptar(){
-    console.log('functiona');
-    let texto = document.getElementById("textoEncriptado").value.toLowerCase();
+    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "fat"]];
 
-    var textoEncriptado = texto.replace(/enter/img, "e");
-    var textoEncriptado = textoEncriptado.replace(/imes/img, "i");
-    var textoEncriptado = textoEncriptado.replace(/ai/img, "a");
-    var textoEncriptado = textoEncriptado.replace(/ober/img, "o");
-    var textoEncriptado = textoEncriptado.replace(/ufat/img, "u");
+    stringEncriptada = stringEncriptada.toLowerCase();
 
-    document.getElementById("textoDesencriptado").innerHTML = textoEncriptado;
-}
+    for(let i = 0; i < matrizCodigo.length; i++){
+        if(stringEncriptada.includes(matrizCodigo[i][0])){
+            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+        }
 
-function copiar(){
- var contenido = document.querySelector("#textoDesencriptado");
- contenido.select();
- document.execCommand("copy");
+    }
+    return stringEncriptada;
 }
